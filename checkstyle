@@ -1,0 +1,27 @@
+#!/bin/bash
+
+dry_run=""
+
+print_usage() {
+    echo "$0 [-df]"
+    echo "-d : Dry-run : do not modify files"
+}
+
+while getopts ':dv' flag; do
+  case "${flag}" in
+    d) dry_run="--dry-run" ;;
+    *) print_usage
+       exit 1 ;;
+  esac
+done
+
+echo "Executing checkstyle:"
+if [ -z $dry_run ]; then
+    echo "Modify files"
+else
+    echo "Dry-run"
+fi
+#Checkstyle
+astyle --project=style.astylerc \
+       --recursive include/\*.hpp unit_tests/\*.cpp unit_tests/\*.cpp \
+       $dry_run 

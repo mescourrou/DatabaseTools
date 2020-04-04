@@ -1,0 +1,16 @@
+style=allman
+align-pointer=type 
+indent=spaces=4 
+attach-closing-while 
+indent-modifiers 
+indent-preproc-define 
+indent-col1-comments 
+pad-oper 
+pad-comma 
+pad-header 
+align-reference=type 
+convert-tabs 
+close-templates 
+max-code-length=80 
+-Q
+ 
