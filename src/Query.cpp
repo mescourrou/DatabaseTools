@@ -1,5 +1,7 @@
 #include "Query.hpp"
 
+#include <algorithm>
+
 // External libs
 #include <glog/logging.h>
 

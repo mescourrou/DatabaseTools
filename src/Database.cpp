@@ -5,6 +5,7 @@
 #include <filesystem>
 #endif
 #include <fstream>
+#include <algorithm>
 
 // Project
 #include <Query.hpp>

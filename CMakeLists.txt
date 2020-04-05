@@ -13,8 +13,9 @@ if(BUILD_USE_FILESYSTEM)
     set(FILESYSTEM_LIB stdc++fs)
 endif()
 
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 set(DB_TOOLS_THIRDPARTY_DIR "${CMAKE_SOURCE_DIR}/thirdparty")
+list(APPEND CMAKE_MODULE_PATH "${DB_TOOLS_THIRDPARTY_DIR}/sqlite3/cmake")
 
 find_package(glog REQUIRED)
 find_package(sqlite REQUIRED)
@@ -24,11 +25,11 @@ add_library(DatabaseTools
     src/Query.cpp src/Query.hpp)
 target_link_libraries(DatabaseTools
     glog
-    sqlite
+    sqlite3
     ${FILESYSTEM_LIB})
 target_include_directories(DatabaseTools PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 if (BUILD_USE_FILESYSTEM)
-    target_compile_definitions(DatabaseTools PRIVATE BUILD_USE_FILESYSTEM)
+    target_compile_definitions(DatabaseTools PUBLIC BUILD_USE_FILESYSTEM)
 endif()
 
 if (BUILD_TEST)
